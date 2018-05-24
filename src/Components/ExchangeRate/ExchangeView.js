@@ -4,7 +4,6 @@ import Row from '../Grid/Row';
 import Table from '../Grid/Table';
 import TableRow from '../Grid/TableRow';
 import TableData from '../Grid/TableData';
-import ExchangeDisplay from './ExchangeDisplay';
 
 class ExchangeView extends Component {
     state = {
@@ -29,7 +28,7 @@ class ExchangeView extends Component {
                   console.log(this.state.exchanges);
         })
     }
-
+/*
     mapObject = (exchangeRates) => {
       console.log(exchangeRates);
       const tableContent = Object.keys(exchangeRates).map(item => {
@@ -40,11 +39,7 @@ class ExchangeView extends Component {
       });
       return tableContent;
     }
-
-    filterExchanges = (country) => {
-
-    }
-
+*/
     render () {
       const exchange = this.state.exchanges;
       return (

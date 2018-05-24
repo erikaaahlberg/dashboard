@@ -19,12 +19,12 @@ class App extends Component {
         <Header/>
         <Container>
           <Row>
-            <ExchangeView />
-            <WeatherView/>
-          </Row>
-          <Row>
             <DisplayClock/>
             <Timer/>
+          </Row>
+          <Row>
+            <ExchangeView />
+            <WeatherView/>
           </Row>
         </Container>
         </React.Fragment>

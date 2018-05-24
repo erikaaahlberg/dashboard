@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import DisplayClock from './DisplayClock';
 import Div from '../Grid/Div';
 import Row from '../Grid/Row';
+import Button from '../Buttons/Button';
 import TimerDisplay from './TimerDisplay';
 
 class Timer extends Component {
   state = {
     min: '',
     sec: ''
+  }
+  constructor(props) {
+    super(props);
+    this.startFromBeginning = this.startFromBeginning.bind(this);
   }
 
   componentDidMount () {
@@ -16,6 +21,7 @@ class Timer extends Component {
   startFromBeginning = () => {
     this.componentDidMount();
   }
+
 
   addZero = (sec) => {
     if (sec < 10) {
@@ -59,7 +65,11 @@ class Timer extends Component {
     return (
       <Div column = "col-md-4">
         <TimerDisplay timer = { timerToDisplay }/>
-        <button className ="update-button" onClick = {this.startFromBeginning}/>
+        <button onClick = {this.startFromBeginning}>click me</button>
+        <Button styleClass ="button button-update" 
+        onClick = { this.startFromBeginning } 
+        buttonText = "Restart timer"
+        id = "updateTimerButton" />
       </Div>
     )
   }
