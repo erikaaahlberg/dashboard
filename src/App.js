@@ -9,6 +9,7 @@ import TableData from './Components/Grid/TableData';
 import ExchangeView from './Components/ExchangeRate/ExchangeView';
 import WeatherView from './Components/Weather/WeatherView';
 import DisplayClock from './Components/Time/DisplayClock';
+import Timer from './Components/Time/Timer';
 import './App.css';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
           </Row>
           <Row>
             <DisplayClock/>
+            <Timer/>
           </Row>
         </Container>
         </React.Fragment>

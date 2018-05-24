@@ -25,7 +25,6 @@ class DisplayClock extends Component {
     min = this.addZero(min);
     sec = this.addZero(sec);
     const time = `${hour} : ${min} : ${sec}`;
-    /*setTimeout(getTime, 500);*/
     this.setState({ time: time });  
   }
 

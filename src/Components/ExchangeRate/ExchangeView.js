@@ -18,10 +18,15 @@ class ExchangeView extends Component {
         fetch('http://data.fixer.io/api/latest?access_key=3194886927d7a7363336a29f5a55e8d4')
             .then(response => response.json())
                 .then((exchangeData) => {
-                  this.setState({ exchanges: exchangeData.rates });
-                  console.log(exchangeData);
-                  /*const exchangeRates = this.state.exchanges.rates;
-                  console.log(this.mapObject(exchangeRates));*/
+                  const exchanges = {
+                    base: exchangeData.base,
+                    sek: exchangeData.rates.SEK,
+                    usd: exchangeData.rates.USD,
+                    aud: exchangeData.rates.AUD,
+                    lastUpdate: exchangeData.date 
+                  }
+                  this.setState({ exchanges: exchanges });
+                  console.log(this.state.exchanges);
         })
     }
 
@@ -31,10 +36,7 @@ class ExchangeView extends Component {
          <TableRow id = { item }>
                  <TableData data = { item } id = { item }/>
                  <TableData data = { exchangeRates[item] } id = { exchangeRates[item] }/>
-                </TableRow>
-          
-        /*console.log(item);
-        console.log(exchangeRates[item]);*/
+          </TableRow>
       });
       return tableContent;
     }
@@ -44,46 +46,28 @@ class ExchangeView extends Component {
     }
 
     render () {
-      const eur = this.state.exchanges.EUR;
-      const sek = this.state.exchanges.SEK;
-      /*const exchangeTableContent = this.mapObject(this.state.exchanges.rates);
-      console.log(this.state.exchanges.rates);
-      const exchangeTableContent = this.mapObject(exchangeRates);
-      
-      /*const exchangeTableData = Object.keys(this.state.exchanges).map( country => 
-        <TableRow id = { country }>
-        <TableData data = { country } />
-        <TableData data = { this.state.exchanges[country] } /> 
-        </TableRow> );
-       const exchangeTableData = this.state.exchanges.map((country) => 
-        <TableRow id = {country}>
-        <TableData data = { country } />
-        <TableData data = { country } />
-        </TableRow>
-      );
-      console.log(exchangeTableData);
-      
-      
-            { 
-              this.mapObject(exchangeRates, function (key, value) {
-                return <div>Key: {key}, Value: {value}</div>;
-              })
-            }
-            
-            */
+      const exchange = this.state.exchanges;
       return (
           <Div column = "col-md-6">
             <Row>
-            <Div column = "col-md-6">
-              <p>EUR: {eur}</p>
-            </Div>
-            <Div column = "col-md-6">
-              <p>SEK: {sek}</p>
+              <Div column = "col-md-12">
+                <p>Base: {exchange.base}</p>
+              </Div>
+              <Div column = "col-md-12">
+                <p>Swedish SEK: {exchange.sek}</p>
+              </Div>
+              <Div column = "col-md-12">
+                <p>United States USD: {exchange.usd}</p>
+              </Div>
+              <Div column = "col-md-12">
+                <p>Australian AUD: {exchange.aud}</p>
+              </Div>
+              <Div column = "col-md-12">
+                <p>Last update: {exchange.lastUpdate}</p>
             </Div>
             </Row>
           </Div>
       )
     }
 }
-
 export default ExchangeView;
