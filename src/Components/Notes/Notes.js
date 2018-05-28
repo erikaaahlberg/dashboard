@@ -16,7 +16,7 @@ class Notes extends Component {
     
     render () {
         return (
-            <Div column = "col-md-4">
+            <Div column = "col-md-5" styleClass = "wrapper wrapper-notes" id = "notesWrapper">
                 <InputField formId = "notesForm" inputFieldId = "notesInput" buttonId = "notesSubmitButton" buttonText = "Submit" event = { this.submitInput }/>
             </Div>
         )

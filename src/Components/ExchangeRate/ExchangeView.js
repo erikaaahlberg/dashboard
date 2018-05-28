@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import Div from '../Grid/Div';
 import Row from '../Grid/Row';
-import Table from '../Grid/Table';
-import TableRow from '../Grid/TableRow';
-import TableData from '../Grid/TableData';
+import List from '../List/List';
+import ListItems from '../List/ListItems';
 import Button from '../Buttons/Button';
 
 class ExchangeView extends Component {
     state = {
-        exchanges: ''
+        exchanges: [],
+        listTitles: [
+          'Base',
+          'Swedish SEK',
+          'United States USD', 
+          'Australian AUD',
+          'Last update'
+        ]
     }
     componentDidMount(){
       this.fetchExchanges();
@@ -21,7 +27,7 @@ class ExchangeView extends Component {
       let sec = today.getSeconds();
       min = this.addZero(min);
       sec = this.addZero(sec);
-      return  `${hour} : ${min} : ${sec}`;
+      return  `${hour}:${min}:${sec}`;
       /*const time = `${hour} : ${min} : ${sec}`;
       this.setState({ time: time });  */
     }
@@ -38,12 +44,11 @@ class ExchangeView extends Component {
             .then(response => response.json())
                 .then((exchangeData) => {
                   const exchanges = {
-                    base: exchangeData.base,
-                    sek: exchangeData.rates.SEK,
-                    usd: exchangeData.rates.USD,
-                    aud: exchangeData.rates.AUD,
-                    dateLastUpdate: exchangeData.date, 
-                    timeLastUpdate: this.getTime()
+                    Base: exchangeData.base,
+                    SEK: exchangeData.rates.SEK,
+                    USD: exchangeData.rates.USD,
+                    AUD: exchangeData.rates.AUD,
+                    Updated: `${exchangeData.date} at ${this.getTime()}`
                   }
                   this.setState({ exchanges: exchanges });
                   console.log(this.state.exchanges);
@@ -53,29 +58,35 @@ class ExchangeView extends Component {
     render () {
       const exchange = this.state.exchanges;
       return (
-          <Div column = "col-md-6">
+              <Div column = "col-md-5">
+                <List id = "ul-exchange" styleClass = "ul" listObject = { this.state.exchanges } listArray = { this.state.listTitles }/>
+                <Button id = "updateExchange" styleClass = "button button-update" buttonText = "Update" event = { this.fetchExchanges } />
+              </Div>
+      )
+    }
+}
+/*
+<Div column = "col-md-6" id = "exchange-wrapper">
             <Row>
               <Div column = "col-md-12">
-                <p>Base: {exchange.base}</p>
+                <p>Base: { exchange.base }</p>
               </Div>
               <Div column = "col-md-12">
-                <p>Swedish SEK: {exchange.sek}</p>
+                <p>Swedish SEK: { exchange.sek }</p>
               </Div>
               <Div column = "col-md-12">
-                <p>United States USD: {exchange.usd}</p>
+                <p>United States USD: { exchange.usd }</p>
               </Div>
               <Div column = "col-md-12">
-                <p>Australian AUD: {exchange.aud}</p>
+                <p>Australian AUD: { exchange.aud }</p>
               </Div>
               <Div column = "col-md-6">
-                <p>Last update: {exchange.dateLastUpdate} at {exchange.timeLastUpdate}</p>
+                <p>Last update: { exchange.dateLastUpdate } at { exchange.timeLastUpdate }</p>
               </Div>
               <Div column = "col-md-6">
                 <Button id = "updateExchange" styleClass = "button button-update" buttonText = "Update" event = { this.fetchExchanges } />
               </Div>
             </Row>
           </Div>
-      )
-    }
-}
+*/
 export default ExchangeView;

@@ -26,14 +26,14 @@ class DisplayClock extends Component {
     let sec = today.getSeconds();
     min = this.addZero(min);
     sec = this.addZero(sec);
-    const time = `${day} ${hour} : ${min} : ${sec}`;
+    const time = `${day} ${hour}:${min}:${sec}`;
     this.setState({ time: time });  
   }
 
   render(){
     setTimeout(this.getTime, 500);
     return(
-      <Div column = "col-md-4">
+      <Div column = "col-md-2" styleClass = "wrapper wrapper-clock" id = "clockWrapper">
         {this.state.time}
       </Div>
     )

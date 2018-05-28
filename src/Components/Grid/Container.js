@@ -1,4 +1,5 @@
 import React from 'react';
+import './Grid.css';
 
 const Container = (props) => {
     return (

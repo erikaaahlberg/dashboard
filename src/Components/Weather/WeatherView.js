@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import Div from '../Grid/Div';
-import Row from '../Grid/Row';
+import List from '../List/List';
 
 class WeatherView extends Component {
   state = {
-        city: 'Stockholm',
-        tempNow: '',
-        minTemp: '',
-        maxTemp: '',
-        humidity: '',
-        weather: ''
+    weather: [],
+    listTitles: [
+      'City',
+      'Temp now',
+      'Min temp', 
+      'Max temp',
+      'Humidity',
+      'Weather'
+    ]
   }
 
   componentDidMount(){
@@ -32,28 +35,29 @@ class WeatherView extends Component {
       fetch('http://api.openweathermap.org/data/2.5/weather?q=Stockholm&APPID=2f48d31b86a2cb449c5d750f3c3e1a76')
           .then(response => response.json())
               .then((weatherData) => {
-                this.setState({ 
+                const weather = { 
+                  city: 'Stockholm',
                   tempNow: this.convertTemperature(weatherData.main.temp),
                   minTemp: this.convertTemperature(weatherData.main.temp_min),
                   maxTemp: this.convertTemperature(weatherData.main.temp_max),
                   humidity: weatherData.main.humidity,
                   weather: this.correctToCapitalLetter(weatherData.weather[0].description)
-                });
+                };
+                this.setState({ weather: weather });
               })
   }
 
 
   render () {
     return (
-      <Div column = "col-md-6">
-        <p>City: {this.state.city}</p>
-        <p>Min temp: {this.state.minTemp}</p>
-        <p>Max temp: {this.state.maxTemp}</p>
-        <p>Humidity: {this.state.humidity}</p>
-        <p>Weather: {this.state.weather}</p>
+      <Div column = "col-md-5">
+        <List listObject = { this.state.weather } listArray = { this.state.listTitles}/>
       </Div>
     )  
   }
 }
+/*
+<List listArray = {this.state.weather}/>
+*/
 
 export default WeatherView;

@@ -1,6 +1,7 @@
 body {
-    background: grey;
+    background: rgb(201, 201, 201);
+    margin: auto;
 }
-div {
-    border: 1px solid black;
+* {
+    border-radius: 20px;
 }

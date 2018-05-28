@@ -63,7 +63,7 @@ class Timer extends Component {
     this.countDownTime();
     let timerToDisplay = this.timerOutput();
     return (
-      <Div column = "col-md-4">
+      <Div column = "col-md-2" styleClass = "wrapper wrapper-timer" id = "timerWrapper">
         <TimerDisplay timer = { timerToDisplay }/>
         <Button styleClass ="button button-update" 
         event = { this.startFromBeginning } 
