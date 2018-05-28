@@ -13,18 +13,20 @@ class DisplayClock extends Component {
   addZero = (number) => {
     if (number < 10) {
       number = "0" + number;
-    };  // add zero in front of numbers < 10
+    }; 
     return number;
   }
 
   getTime = () => {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const today = new Date();
+    const day = days[today.getDay()];
     const hour = today.getHours();
     let min = today.getMinutes();
     let sec = today.getSeconds();
     min = this.addZero(min);
     sec = this.addZero(sec);
-    const time = `${hour} : ${min} : ${sec}`;
+    const time = `${day} ${hour} : ${min} : ${sec}`;
     this.setState({ time: time });  
   }
 

@@ -9,6 +9,7 @@ import TableData from './Components/Grid/TableData';
 import ExchangeView from './Components/ExchangeRate/ExchangeView';
 import WeatherView from './Components/Weather/WeatherView';
 import DisplayClock from './Components/Time/DisplayClock';
+import Notes from './Components/Notes/Notes';
 import Timer from './Components/Time/Timer';
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends Component {
         <Container>
           <Row>
             <DisplayClock/>
+            <Notes/>
             <Timer/>
           </Row>
           <Row>

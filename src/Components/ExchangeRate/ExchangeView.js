@@ -4,6 +4,7 @@ import Row from '../Grid/Row';
 import Table from '../Grid/Table';
 import TableRow from '../Grid/TableRow';
 import TableData from '../Grid/TableData';
+import Button from '../Buttons/Button';
 
 class ExchangeView extends Component {
     state = {
@@ -12,7 +13,26 @@ class ExchangeView extends Component {
     componentDidMount(){
       this.fetchExchanges();
     }
+
+    getTime = () => {
+      const today = new Date();
+      const hour = today.getHours();
+      let min = today.getMinutes();
+      let sec = today.getSeconds();
+      min = this.addZero(min);
+      sec = this.addZero(sec);
+      return  `${hour} : ${min} : ${sec}`;
+      /*const time = `${hour} : ${min} : ${sec}`;
+      this.setState({ time: time });  */
+    }
     
+    addZero = (number) => {
+      if (number < 10) {
+        number = "0" + number;
+      }; 
+      return number;
+    }
+
     fetchExchanges = () => {
         fetch('http://data.fixer.io/api/latest?access_key=3194886927d7a7363336a29f5a55e8d4')
             .then(response => response.json())
@@ -22,24 +42,14 @@ class ExchangeView extends Component {
                     sek: exchangeData.rates.SEK,
                     usd: exchangeData.rates.USD,
                     aud: exchangeData.rates.AUD,
-                    lastUpdate: exchangeData.date 
+                    dateLastUpdate: exchangeData.date, 
+                    timeLastUpdate: this.getTime()
                   }
                   this.setState({ exchanges: exchanges });
                   console.log(this.state.exchanges);
         })
     }
-/*
-    mapObject = (exchangeRates) => {
-      console.log(exchangeRates);
-      const tableContent = Object.keys(exchangeRates).map(item => {
-         <TableRow id = { item }>
-                 <TableData data = { item } id = { item }/>
-                 <TableData data = { exchangeRates[item] } id = { exchangeRates[item] }/>
-          </TableRow>
-      });
-      return tableContent;
-    }
-*/
+
     render () {
       const exchange = this.state.exchanges;
       return (
@@ -57,9 +67,12 @@ class ExchangeView extends Component {
               <Div column = "col-md-12">
                 <p>Australian AUD: {exchange.aud}</p>
               </Div>
-              <Div column = "col-md-12">
-                <p>Last update: {exchange.lastUpdate}</p>
-            </Div>
+              <Div column = "col-md-6">
+                <p>Last update: {exchange.dateLastUpdate} at {exchange.timeLastUpdate}</p>
+              </Div>
+              <Div column = "col-md-6">
+                <Button id = "updateExchange" styleClass = "button button-update" buttonText = "Update" event = { this.fetchExchanges } />
+              </Div>
             </Row>
           </Div>
       )

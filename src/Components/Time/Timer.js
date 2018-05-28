@@ -65,9 +65,8 @@ class Timer extends Component {
     return (
       <Div column = "col-md-4">
         <TimerDisplay timer = { timerToDisplay }/>
-        <button onClick = {this.startFromBeginning}>click me</button>
         <Button styleClass ="button button-update" 
-        onClick = { this.startFromBeginning } 
+        event = { this.startFromBeginning } 
         buttonText = "Restart timer"
         id = "updateTimerButton" />
       </Div>
