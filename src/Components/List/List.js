@@ -1,5 +1,6 @@
 import React from 'react';
 import ListItems from './ListItems';
+import './List.css';
 
 const List = (props) => {
     return (

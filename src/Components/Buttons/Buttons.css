@@ -1,0 +1,23 @@
+button {
+    border-radius: 5px;
+    padding: 2px 20px 2px 20px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    box-shadow: 5px 5px 25px rgb(155, 155, 155);
+    border-style: outset;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.button-submit {
+    background: rgb(7, 146, 135);
+    border-color: rgb(7, 146, 135);
+}
+
+.button-update {
+    background: rgb(255, 123, 0);
+    border-color: rgb(255, 123, 0);
+}

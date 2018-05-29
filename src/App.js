@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './Components/Header/Header';
 import Container from './Components/Grid/Container';
 import Row from './Components/Grid/Row';
 import Div from './Components/Grid/Div';
@@ -14,7 +13,6 @@ class App extends Component {
     render() {
       return (
         <React.Fragment>
-        <Header/>
         <Container>
           <Row>
             <DisplayClock/>
@@ -22,7 +20,7 @@ class App extends Component {
             <Timer/>
           </Row>
           <Row>
-            <ExchangeView />
+            <ExchangeView/>
             <WeatherView/>
           </Row>
         </Container>

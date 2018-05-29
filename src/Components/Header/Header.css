@@ -1,20 +1,7 @@
-.head {
-    background: grey;
-}
-.head__ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-.head__li {
-    display: inline-block;
-}
-.head__li a {
-    color: white;
-    font-family: 'arial';
-}
-.head__li a:active {
-    background: teal;
+h1, 
+h2, 
+h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
 }

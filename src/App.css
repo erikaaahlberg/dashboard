@@ -1,7 +1,9 @@
 body {
     background: rgb(201, 201, 201);
     margin: auto;
+    font-family: 'Yantramanav', sans-serif;
+    /*letter-spacing: 2px;*/
 }
 * {
-    border-radius: 20px;
+    border-radius: 5px;
 }

@@ -3,7 +3,7 @@ import Div from '../Grid/Div';
 
 const TimerDisplay = (props) => {
   return (
-    <Div column = "col-md-3" id = "timer">
+    <Div column = { props.column } id = "timer">
       { props.timer }
     </Div>
     )

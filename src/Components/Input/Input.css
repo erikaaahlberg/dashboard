@@ -1,0 +1,21 @@
+form {
+    margin: auto;
+}
+textarea {
+    font-size: 1.5em;
+    font-family: 'Shadows Into Light', cursive;
+    box-sizing: border-box;
+    border-radius: 0px;
+    box-shadow: 5px 5px 25px rgb(155, 155, 155);
+    border: none;
+    padding: 2px;
+    width: 100%;
+    background: url("../Images/paper-background.jpg");
+
+}
+
+article {
+    font-family: 'Shadows Into Light', cursive;
+    padding: 2px;
+    text-align: left;
+}

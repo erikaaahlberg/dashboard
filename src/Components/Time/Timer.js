@@ -8,20 +8,21 @@ import TimerDisplay from './TimerDisplay';
 class Timer extends Component {
   state = {
     min: '',
-    sec: ''
-  }
-  constructor(props) {
-    super(props);
-    this.startFromBeginning = this.startFromBeginning.bind(this);
+    sec: '',
+    column: ''
   }
 
   componentDidMount () {
-    this.setState({ min: 5, sec: 0 });
+    this.startFromBeginning();
+    this.countDownTime();
   }
+  
   startFromBeginning = () => {
-    this.componentDidMount();
+    this.setState({ 
+      min: 0, 
+      sec: 15,
+      column: 'col-md-12 timer' });
   }
-
 
   addZero = (sec) => {
     if (sec < 10) {
@@ -33,13 +34,18 @@ class Timer extends Component {
   startTime = () => {
     let min = this.state.min;
     let sec = this.state.sec;
-    if (min === 0 && sec === 0) {
-      this.startFromBeginning();
+    if (min === 0 && sec <= 10) {
+      this.setState({ column: 'col-md-12 timer --red' });
+      if (sec > 0) {
+        sec = sec - 1;
+        this.setState({ min : min, sec : sec });
+      }
     }
     else {
       if (sec === 0) {
         sec = 59;
         min = min - 1;
+        this.setState({ min : min, sec : sec });
       }
       sec = sec - 1;
       this.setState({ min : min, sec : sec });
@@ -47,7 +53,7 @@ class Timer extends Component {
   }
   countDownTime = () => {
     if (this.state.min >= 0 && this.state.sec >= 0) {
-      setTimeout(this.startTime, 1000);
+      setInterval(this.startTime, 1000);
     }
   }
 
@@ -60,14 +66,14 @@ class Timer extends Component {
     return timerToDisplay;
   }
   render () {
-    this.countDownTime();
     let timerToDisplay = this.timerOutput();
+    let divColumn = this.state.column;
     return (
       <Div column = "col-md-2" styleClass = "wrapper wrapper-timer" id = "timerWrapper">
-        <TimerDisplay timer = { timerToDisplay }/>
+        <TimerDisplay column = { this.state.column } timer = { timerToDisplay }/>
         <Button styleClass ="button button-update" 
         event = { this.startFromBeginning } 
-        buttonText = "Restart timer"
+        buttonText = "Restart"
         id = "updateTimerButton" />
       </Div>
     )

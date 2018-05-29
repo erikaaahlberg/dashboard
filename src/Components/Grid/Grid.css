@@ -1,5 +1,11 @@
 div {
-    margin: 20px auto;
+    margin: auto;
     box-sizing: border-box;
-    border: 2px solid orange;
+    padding: 20px;
+    background: white;
+}
+.container-fluid,
+.row {
+    padding: 0px;
+    margin: 0px;
 }

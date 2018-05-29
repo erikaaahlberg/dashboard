@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Div from '../Grid/Div';
 import Row from '../Grid/Row';
+import H2 from '../Header/H2';
 import List from '../List/List';
 import ListItems from '../List/ListItems';
 import Button from '../Buttons/Button';
@@ -59,6 +60,7 @@ class ExchangeView extends Component {
       const exchange = this.state.exchanges;
       return (
               <Div column = "col-md-5">
+                <H2 title = "Exchange rates"/>
                 <List id = "ul-exchange" styleClass = "ul" listObject = { this.state.exchanges } listArray = { this.state.listTitles }/>
                 <Button id = "updateExchange" styleClass = "button button-update" buttonText = "Update" event = { this.fetchExchanges } />
               </Div>

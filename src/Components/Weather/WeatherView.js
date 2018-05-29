@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Div from '../Grid/Div';
+import H3 from '../Header/H3';
 import List from '../List/List';
 
 class WeatherView extends Component {
@@ -49,8 +50,10 @@ class WeatherView extends Component {
 
 
   render () {
+    const title = `Weather in ${this.state.weather.city}`;
     return (
       <Div column = "col-md-5">
+        <H3 title = { title }/>
         <List listObject = { this.state.weather } listArray = { this.state.listTitles}/>
       </Div>
     )  

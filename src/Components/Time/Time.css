@@ -1,0 +1,29 @@
+#timerWrapper,
+#notesWrapper,
+#clockWrapper {
+    text-align: center;
+    width: 100%;
+}
+.timer,
+#clockWrapper {
+    background: black;
+    color: white;
+    font-size: 1.8em;
+    box-shadow: 5px 5px 25px rgb(155, 155, 155);
+    padding: 5px 20px 5px 20px;
+    text-align: center;
+}
+
+@keyframes shiftBackground {
+    from {background-color: rgb(202, 0, 0);}
+    to {background-color: rgb(255, 221, 221);}
+}
+.--red {
+    background: red;
+    animation: shiftBackground infinite 4s ease-in-out 2s infinite alternate; 
+    animation-duration: 2;
+    color: black; 
+    animation-delay: 1s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
