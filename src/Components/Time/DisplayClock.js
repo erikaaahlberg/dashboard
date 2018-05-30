@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Div from '../Grid/Div';
 import Row from '../Grid/Row';
+import { getTime } from '../../GlobalFunctions';
 
 class DisplayClock extends Component {
   state = {
     time: ''
   }
-  /*componentDidMount(){
-    setTimeout(this.getTime, 500);
-  }*/
+  componentDidMount(){
+    this.getTime();
+  }
 
   addZero = (number) => {
     if (number < 10) {
@@ -26,12 +27,14 @@ class DisplayClock extends Component {
     let sec = today.getSeconds();
     min = this.addZero(min);
     sec = this.addZero(sec);
-    const time = `${day} ${hour}:${min}:${sec}`;
+    return `${day} ${hour}:${min}:${sec}`;
+  }
+  setTime = () => {
+    let time = this.getTime();
     this.setState({ time: time });  
   }
-
   render(){
-    setTimeout(this.getTime, 500);
+    setInterval(this.setTime, 500);
     return(
       <Div column = "col-md-2" styleClass = "wrapper wrapper-clock" id = "clockWrapper">
         {this.state.time}

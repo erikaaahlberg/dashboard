@@ -19,8 +19,8 @@ class Timer extends Component {
   
   startFromBeginning = () => {
     this.setState({ 
-      min: 0, 
-      sec: 15,
+      min: 5, 
+      sec: 0,
       column: 'col-md-12 timer' });
   }
 

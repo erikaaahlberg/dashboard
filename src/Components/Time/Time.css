@@ -20,7 +20,7 @@
 }
 .--red {
     background: red;
-    animation: shiftBackground infinite 4s ease-in-out 2s infinite alternate; 
+    animation: shiftBackground infinite 2s ease-in-out 1s alternate; 
     animation-duration: 2;
     color: black; 
     animation-delay: 1s;

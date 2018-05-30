@@ -29,8 +29,6 @@ class ExchangeView extends Component {
       min = this.addZero(min);
       sec = this.addZero(sec);
       return  `${hour}:${min}:${sec}`;
-      /*const time = `${hour} : ${min} : ${sec}`;
-      this.setState({ time: time });  */
     }
     
     addZero = (number) => {
@@ -67,28 +65,5 @@ class ExchangeView extends Component {
       )
     }
 }
-/*
-<Div column = "col-md-6" id = "exchange-wrapper">
-            <Row>
-              <Div column = "col-md-12">
-                <p>Base: { exchange.base }</p>
-              </Div>
-              <Div column = "col-md-12">
-                <p>Swedish SEK: { exchange.sek }</p>
-              </Div>
-              <Div column = "col-md-12">
-                <p>United States USD: { exchange.usd }</p>
-              </Div>
-              <Div column = "col-md-12">
-                <p>Australian AUD: { exchange.aud }</p>
-              </Div>
-              <Div column = "col-md-6">
-                <p>Last update: { exchange.dateLastUpdate } at { exchange.timeLastUpdate }</p>
-              </Div>
-              <Div column = "col-md-6">
-                <Button id = "updateExchange" styleClass = "button button-update" buttonText = "Update" event = { this.fetchExchanges } />
-              </Div>
-            </Row>
-          </Div>
-*/
+
 export default ExchangeView;

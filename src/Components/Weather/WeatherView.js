@@ -59,8 +59,5 @@ class WeatherView extends Component {
     )  
   }
 }
-/*
-<List listArray = {this.state.weather}/>
-*/
 
 export default WeatherView;

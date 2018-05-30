@@ -9,19 +9,5 @@ const ListItems = (props) => {
     })
     return listItems;
 }
-/*
-class ListItems extends Component {
-    
-    elements = array.map((item, index ) => {
-        return <li key = { index } > { item } </li>;
-    });
-    render () {
-        return(
 
-        )
-    }
-
-
-}
-*/
 export default ListItems;
